@@ -1,30 +1,20 @@
 const express = require('express');
 const router = express.Router();
-const arreyposts = require('../data/blogs');
+const blogController = require('../controllers/blogController');
 
-// Index: Lista di tutti i blog
-router.get('/', (req, res) => {
-    res.json(arreyposts);
-});
+// Index: Restituisce tutti i blog
+router.get('/', blogController.index);
 
-// Show: Dettagli di un singolo blog
-router.get('/:id', (req, res) => {
-    res.send(`Dettagli del blog ${req.params.id}`);
-});
+// Show: Restituisce un singolo blog
+router.get('/:id', blogController.show);
 
 // Create: Creazione di un nuovo blog
-router.post('/', (req, res) => {
-    res.send('Creazione di un nuovo blog');
-});
+router.post('/', blogController.store);
 
 // Update: Modifica integrale di un blog
-router.put('/:id', (req, res) => {
-    res.send(`Modifica del blog ${req.params.id}`);
-});
+router.put('/:id', blogController.store);
 
 // Delete: Eliminazione di un blog
-router.delete('/:id', (req, res) => {
-    res.send(`Cancellazione del blog ${req.params.id}`);
-});
+router.delete('/:id', blogController.destroy);
 
 module.exports = router;
