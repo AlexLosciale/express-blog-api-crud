@@ -1,20 +1,14 @@
 const express = require('express');
 const router = express.Router();
-const blogController = require('../controllers/blogController');
+const blogController = require('../controllers/blogController'); // Importa il controller
 
-// Index: Restituisce tutti i blog
+// Index: Restituisce tutti i post
 router.get('/', blogController.index);
 
-// Show: Restituisce un singolo blog
+// Show: Restituisce un singolo post
 router.get('/:id', blogController.show);
 
-// Create: Creazione di un nuovo blog
-router.post('/', blogController.store);
-
-// Update: Modifica integrale di un blog
-router.put('/:id', blogController.store);
-
-// Delete: Eliminazione di un blog
+// Delete: Eliminazione di un post
 router.delete('/:id', blogController.destroy);
 
 module.exports = router;

@@ -1,6 +1,3 @@
-const express = require('express');
-const router = express.Router();
-
 const posts = [
     {
         id: 1,
@@ -25,8 +22,5 @@ const posts = [
     }
 ];
 
-router.get('/bacheca', (req, res) => {
-    res.json(posts);
-});
+module.exports = posts;
 
-module.exports = router;
