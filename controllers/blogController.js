@@ -18,8 +18,15 @@ function show(req, res) {
 }
 
 function store(req, res) {
-    console.log(req.body);
-    res.send('Dati ricevuti');
+    const post = {
+        id: blog.length + 1,
+        title: req.body.title,
+        content: req.body.content,
+        image: req.body.image,
+        tags: req.body.tags,
+    };
+    blog.push(post);
+    res.json(post);
 }
 
 function update(req, res) {
@@ -40,7 +47,7 @@ function destroy(req, res) {
     const index = blog.findIndex(p => p.id == req.params.id);
     if (index !== -1) {
         blog.splice(index, 1);
-        res.sendstatus(204);
+        res.sendStatus(204);
     } else {
         res.status(404).send('Blog non trovato');
     }
