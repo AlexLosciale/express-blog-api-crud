@@ -24,7 +24,16 @@ function store(req, res) {
 
 function update(req, res) {
     const post = blog.find(p => p.id == req.params.id);
-
+    if (!post) {
+        res.status(404).send('Blog non trovato');
+    } else {
+        post.title = req.body.title;
+        post.content = req.body.content;
+        post.image = req.body.image;
+        post.tags = req.body.tags;
+        
+        res.json(post);
+    }
 };
 
 function destroy(req, res) {
