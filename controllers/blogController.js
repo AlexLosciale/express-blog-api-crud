@@ -1,29 +1,25 @@
-const blog = require('../data/bacheca'); // Importa i dati dal file bacheca
+const blog = require('../data/blogs'); 
 
-// Index: Restituisce tutti i post
 function index(req, res) {
-    res.json(blog);  // Restituisce tutti i post in formato JSON
+    res.json(blog);
 }
 
-// Show: Restituisce un singolo post
 function show(req, res) {
-    const post = blog.find(p => p.id == req.params.id);  // Cerca il post con l'id specificato
+    const post = blog.find(p => p.id == req.params.id);
     if (post) {
-        res.json(post);  // Restituisce il post trovato
+        res.json(post);
     } else {
-        res.status(404).send('Blog non trovato');  // Se il post non esiste, restituisce errore 404
+        res.status(404).send('Blog non trovato');
     }
 }
 
-// Destroy: Eliminazione di un post
 function destroy(req, res) {
-    const index = blog.findIndex(p => p.id == req.params.id);  // Trova l'indice del post
+    const index = blog.findIndex(p => p.id == req.params.id);
     if (index !== -1) {
-        blog.splice(index, 1);  // Rimuove il post dalla lista
-        console.log(blog);  // Stampa la lista aggiornata nel terminale
-        res.status(204).send();  // Risponde con stato 204 e nessun contenuto
+        blog.splice(index, 1);
+        res.status(204).send();
     } else {
-        res.status(404).send('Blog non trovato');  // Se il post non esiste, restituisce errore 404
+        res.status(404).send('Blog non trovato');
     }
 }
 
