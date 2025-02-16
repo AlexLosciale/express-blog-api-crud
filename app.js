@@ -7,8 +7,8 @@ app.use(express.static('public'));
 const blogRouter = require('./ROUTERS/blog'); 
 app.use("/blog", blogRouter);
 
-app.use(notFoundMiddleware);
-app.use(errorMiddleware);
+app.use(require("./middleware/errorHardware"));
+app.use(require("./middleware/notFound"));
 
 app.get('/', (req, res) => {
     res.send('Hello World');
