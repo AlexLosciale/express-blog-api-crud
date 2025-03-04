@@ -4,13 +4,13 @@ const port = 3000;
 const cors = require('cors');
 app.use(cors(
     {
-        origin: 'http://localhost:3000',
+        origin: 'http://localhost:5174',
     }
 ));
 
 app.use(express.json()); 
 app.use(express.static('public'));
-const blogRouter = require('./ROUTERS/blog'); 
+const blogRouter = require('./Routers/blog'); 
 app.use("/blog", blogRouter);
 
 app.use(require("./middleware/errorHardware"));
